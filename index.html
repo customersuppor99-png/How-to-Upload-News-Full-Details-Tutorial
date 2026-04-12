@@ -218,3 +218,43 @@
         });
     });
 </script>
+<div id="welcomePopup" class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/60 backdrop-blur-sm px-4 hidden">
+    <div class="bg-white p-8 rounded-3xl shadow-2xl max-w-lg w-full text-center transform scale-95 transition-all">
+        <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-hand-sparkles text-4xl text-blue-600"></i>
+        </div>
+        <h2 class="text-2xl font-bold text-blue-900 mb-4">স্বাগতম, প্রিয় প্রতিনিধি!</h2>
+        <p class="text-slate-600 mb-6 leading-relaxed">
+            আপনি পার্সেলটি গ্রহণ করেছেন, এজন্য আপনাকে মন থেকে ধন্যবাদ ও অভিনন্দন। আমরা আপনার সাথে কাজ করতে পেরে গর্বিত। আপনার সহযোগিতায় আমরা এগিয়ে যাব। সংবাদ আপলোড করার নিয়ম জানতে সম্পূর্ণ ভিডিওটি দেখুন এবং সরকারি নীতিমালা মেনে চলুন।
+        </p>
+        <div class="flex flex-col gap-3">
+            <a href="https://www.jonotaronlinepresscloub.com/signin/" class="bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700 transition">লগইন করুন</a>
+            <button onclick="closePopup()" class="text-slate-400 hover:text-slate-600 font-medium">পরে দেখব</button>
+        </div>
+    </div>
+</div>
+
+<audio id="welcomeAudio" src="YOUR_AUDIO_FILE_URL.mp3"></audio>
+
+<script>
+    // পপআপ খোলার ফাংশন
+    window.addEventListener('load', () => {
+        const popup = document.getElementById('welcomePopup');
+        const audio = document.getElementById('welcomeAudio');
+        
+        // পেজ লোড হওয়ার সাথে সাথে পপআপ দেখাবে
+        setTimeout(() => {
+            popup.classList.remove('hidden');
+            popup.querySelector('div').classList.add('scale-100');
+            
+            // অডিও প্লে করার চেষ্টা
+            audio.play().catch(e => console.log("অটো-প্লে ব্লকড, ইউজার অ্যাকশন প্রয়োজন।"));
+        }, 1000);
+    });
+
+    // পপআপ বন্ধ করার ফাংশন
+    function closePopup() {
+        document.getElementById('welcomePopup').classList.add('hidden');
+        document.getElementById('welcomeAudio').pause();
+    }
+</script>
