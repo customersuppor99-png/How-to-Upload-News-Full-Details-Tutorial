@@ -197,3 +197,24 @@
 
 </body>
 </html>
+<audio id="welcomeAudio" src="আপনার-অডিও-ফাইলের-লিঙ্ক.mp3"></audio>
+
+<script>
+    // অটোমেটিক অডিও চালানোর স্ক্রিপ্ট
+    window.addEventListener('load', () => {
+        const audio = document.getElementById('welcomeAudio');
+        
+        // ব্রাউজারের অটো-প্লে সীমাবদ্ধতার কারণে ইউজার স্ক্রিনে ক্লিক করলেই প্লে হবে
+        const playAudio = () => {
+            audio.play().catch(error => console.log("অটো-প্লে ব্লক করা হয়েছে, ইউজার ক্লিক করলেই চলবে।"));
+            document.removeEventListener('click', playAudio);
+        };
+        
+        document.addEventListener('click', playAudio);
+        
+        // অথবা সরাসরি অটো-প্লে করার চেষ্টা
+        audio.play().catch(() => {
+            console.log("অটো-প্লে সমর্থিত নয়, ইউজার ইন্টারেকশনের প্রয়োজন।");
+        });
+    });
+</script>
