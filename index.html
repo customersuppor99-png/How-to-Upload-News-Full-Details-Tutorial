@@ -13,6 +13,15 @@
         body {
             font-family: 'Hind Siliguri', sans-serif;
         }
+        /* Highlight animation for video section */
+        @keyframes pulse-border {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        .highlight-video {
+            animation: pulse-border 2s cubic-bezier(0.4, 0, 0.6, 1) forwards;
+            border-color: #10b981 !important;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased flex flex-col min-h-screen">
@@ -29,7 +38,11 @@
                     <p class="text-xs text-slate-500 font-medium">প্রতিনিধি সহায়তা পোর্টাল</p>
                 </div>
             </div>
-            <div>
+            <div class="flex items-center space-x-3">
+                <button onclick="toggleHelpModal()" class="hidden sm:inline-flex items-center space-x-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 px-3.5 py-2 rounded-lg text-sm font-medium transition">
+                    <i data-lucide="help-circle" class="w-4 h-4 text-emerald-600"></i>
+                    <span>সহায়তা মেনু</span>
+                </button>
                 <a href="https://janataronlinepressclub.com/login" target="_blank" class="inline-flex items-center space-x-2 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition shadow-sm">
                     <i data-lucide="log-in" class="w-4 h-4"></i>
                     <span>লগইন করুন</span>
@@ -57,7 +70,7 @@
     <main class="max-w-4xl mx-auto px-4 py-10 flex-grow space-y-12">
 
         <!-- Section 1: Video Tutorial -->
-        <section id="video-section" class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-6 md:p-8 transition hover:shadow-md">
+        <section id="video-section" class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-6 md:p-8 transition-all duration-300">
             <div class="flex items-center space-x-3 mb-6">
                 <div class="bg-red-100 text-red-600 p-2.5 rounded-lg">
                     <i data-lucide="video" class="w-6 h-6"></i>
@@ -68,9 +81,9 @@
                 </div>
             </div>
 
-            <!-- YouTube Video Embed -->
-            <div class="relative w-full aspect-video rounded-xl overflow-hidden shadow-inner bg-slate-900 mb-6 border border-slate-200">
-                <iframe class="w-full h-full" src="https://www.youtube.com/embed/Pn2dMtFj1Sk" title="কীভাবে সংবাদ আপলোড করবেন" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <!-- YouTube Video Embed with Autoplay parameter option -->
+            <div id="video-container-wrapper" class="relative w-full aspect-video rounded-xl overflow-hidden shadow-inner bg-slate-900 mb-6 border border-slate-200">
+                <iframe id="tutorialVideo" class="w-full h-full" src="https://www.youtube.com/embed/Pn2dMtFj1Sk" title="কীভাবে সংবাদ আপলোড করবেন" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
 
             <div class="flex flex-col sm:flex-row items-center justify-between gap-4 bg-slate-50 p-4 rounded-xl border border-slate-100">
@@ -79,7 +92,7 @@
                 </p>
                 <a href="https://youtu.be/Pn2dMtFj1Sk" target="_blank" class="w-full sm:w-auto inline-flex justify-center items-center space-x-2 bg-red-600 hover:bg-red-700 text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition shadow-sm">
                     <i data-lucide="play-circle" class="w-4 h-4"></i>
-                    <span>ভিডিও দেখে শিখুন</span>
+                    <span>ইউটিউবে ভিডিও দেখুন</span>
                 </a>
             </div>
         </section>
@@ -171,15 +184,15 @@
         </button>
     </div>
 
-    <!-- Interactive Help Modal / Drawer -->
-    <div id="helpModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 relative animate-in fade-in zoom-in duration-200">
+    <!-- Interactive Help Modal (Auto-open on page load) -->
+    <div id="helpModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 relative animate-in fade-in zoom-in duration-300 border border-slate-100">
             <button onclick="toggleHelpModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 bg-slate-100 p-1.5 rounded-full transition">
                 <i data-lucide="x" class="w-5 h-5"></i>
             </button>
 
             <div class="flex items-center space-x-3 mb-4">
-                <div class="bg-emerald-100 text-emerald-600 p-2 rounded-xl">
+                <div class="bg-emerald-100 text-emerald-600 p-2.5 rounded-xl">
                     <i data-lucide="help-circle" class="w-6 h-6"></i>
                 </div>
                 <div>
@@ -189,35 +202,35 @@
             </div>
 
             <div class="space-y-3 mt-6">
-                <!-- Option 1: Video Tutorial -->
-                <button onclick="selectHelpOption('video')" class="w-full text-left p-3.5 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50/50 transition flex items-center space-x-3 group">
-                    <div class="bg-red-100 text-red-600 p-2 rounded-lg group-hover:scale-110 transition">
-                        <i data-lucide="play" class="w-4 h-4"></i>
+                <!-- Option 1: Video Tutorial (Triggers Video Section Focus/Autoplay) -->
+                <button onclick="selectHelpOption('video')" class="w-full text-left p-4 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50/60 transition flex items-center space-x-3.5 group shadow-sm">
+                    <div class="bg-red-100 text-red-600 p-2.5 rounded-xl group-hover:scale-110 transition shrink-0">
+                        <i data-lucide="play" class="w-5 h-5"></i>
                     </div>
                     <div>
-                        <p class="text-sm font-semibold text-slate-800 group-hover:text-emerald-900">সংবাদ আপলোডের ভিডিও দেখতে চান?</p>
-                        <p class="text-xs text-slate-500">ধাপে ধাপে ভিডিও টিউটোরিয়াল দেখুন</p>
+                        <p class="text-sm font-bold text-slate-800 group-hover:text-emerald-900">সংবাদ আপলোডের ভিডিও দেখতে চান?</p>
+                        <p class="text-xs text-slate-500">ওয়েবসাইটের ভিতরে ভিডিওটি বড় করে চালু হবে</p>
                     </div>
                 </button>
 
                 <!-- Option 2: Login Website -->
-                <button onclick="selectHelpOption('login')" class="w-full text-left p-3.5 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50/50 transition flex items-center space-x-3 group">
-                    <div class="bg-emerald-100 text-emerald-600 p-2 rounded-lg group-hover:scale-110 transition">
-                        <i data-lucide="log-in" class="w-4 h-4"></i>
+                <button onclick="selectHelpOption('login')" class="w-full text-left p-4 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50/60 transition flex items-center space-x-3.5 group shadow-sm">
+                    <div class="bg-emerald-100 text-emerald-600 p-2.5 rounded-xl group-hover:scale-110 transition shrink-0">
+                        <i data-lucide="log-in" class="w-5 h-5"></i>
                     </div>
                     <div>
-                        <p class="text-sm font-semibold text-slate-800 group-hover:text-emerald-900">আমাদের ওয়েবসাইটে লগইন করতে চান?</p>
+                        <p class="text-sm font-bold text-slate-800 group-hover:text-emerald-900">আমাদের ওয়েবসাইটে লগইন করতে চান?</p>
                         <p class="text-xs text-slate-500">সরাসরি লগইন পোর্টালে প্রবেশ করুন</p>
                     </div>
                 </button>
 
                 <!-- Option 3: Forgot Password / Support Form -->
-                <button onclick="selectHelpOption('support')" class="w-full text-left p-3.5 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50/50 transition flex items-center space-x-3 group">
-                    <div class="bg-amber-100 text-amber-700 p-2 rounded-lg group-hover:scale-110 transition">
-                        <i data-lucide="help-circle" class="w-4 h-4"></i>
+                <button onclick="selectHelpOption('support')" class="w-full text-left p-4 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50/60 transition flex items-center space-x-3.5 group shadow-sm">
+                    <div class="bg-amber-100 text-amber-700 p-2.5 rounded-xl group-hover:scale-110 transition shrink-0">
+                        <i data-lucide="help-circle" class="w-5 h-5"></i>
                     </div>
                     <div>
-                        <p class="text-sm font-semibold text-slate-800 group-hover:text-emerald-900">লগইন সমস্যা বা পাসওয়ার্ড ভুলে গেছেন?</p>
+                        <p class="text-sm font-bold text-slate-800 group-hover:text-emerald-900">লগইন সমস্যা বা পাসওয়ার্ড ভুলে গেছেন?</p>
                         <p class="text-xs text-slate-500">সহায়তার জন্য গুগল ফর্ম পূরণ করুন</p>
                     </div>
                 </button>
@@ -238,12 +251,26 @@
 
         // Handle Help Option Actions
         function selectHelpOption(type) {
+            // Close the popup modal first
             toggleHelpModal();
+
             if (type === 'video') {
-                // Scroll to video section
-                document.getElementById('video-section').scrollIntoView({ behavior: 'smooth' });
-                // Optional: Open video link directly in new tab if requested
-                // window.open('https://youtu.be/Pn2dMtFj1Sk', '_blank');
+                // Scroll smoothly to the video section
+                const videoSection = document.getElementById('video-section');
+                videoSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Add highlight effect to draw user's attention
+                videoSection.classList.add('highlight-video');
+                setTimeout(() => {
+                    videoSection.classList.remove('highlight-video');
+                }, 3000);
+
+                // Automatically append autoplay to YouTube iframe src to play it immediately inside the page
+                const iframe = document.getElementById('tutorialVideo');
+                let currentSrc = iframe.src;
+                if (!currentSrc.includes('autoplay=1')) {
+                    iframe.src = currentSrc + (currentSrc.includes('?') ? '&' : '?') + 'autoplay=1';
+                }
             } else if (type === 'login') {
                 window.open('https://janataronlinepressclub.com/login', '_blank');
             } else if (type === 'support') {
