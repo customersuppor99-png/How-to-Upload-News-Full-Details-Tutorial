@@ -12,39 +12,40 @@
         @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap');
         body {
             font-family: 'Hind Siliguri', sans-serif;
+            background-color: #f8fafc;
         }
-        /* Highlight animation for video section */
-        @keyframes pulse-border {
-            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-            70% { box-shadow: 0 0 0 25px rgba(16, 185, 129, 0); }
+        /* Glowing pulse animation for video section attention */
+        @keyframes glowing-border {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.8); }
+            70% { box-shadow: 0 0 0 30px rgba(16, 185, 129, 0); }
             100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
         }
         .highlight-video {
-            animation: pulse-border 2s cubic-bezier(0.4, 0, 0.6, 1) forwards;
-            border-color: #10b981 !important;
+            animation: glowing-border 2.5s cubic-bezier(0.4, 0, 0.6, 1) forwards;
+            border-color: #059669 !important;
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased flex flex-col min-h-screen">
+<body class="text-slate-800 antialiased flex flex-col min-h-screen selection:bg-emerald-500 selection:text-white">
 
     <!-- Header / Navbar -->
-    <header class="bg-white shadow-sm sticky top-0 z-40 border-b border-slate-100">
+    <header class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-40 border-b border-slate-100">
         <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <div class="bg-emerald-600 text-white p-2.5 rounded-xl shadow-md">
+                <div class="bg-gradient-to-tr from-emerald-600 to-teal-500 text-white p-3 rounded-2xl shadow-md shadow-emerald-500/20">
                     <i data-lucide="newspaper" class="w-6 h-6"></i>
                 </div>
                 <div>
                     <h1 class="text-xl font-bold text-slate-900 leading-tight">জনতার অনলাইন প্রেস ক্লাব</h1>
-                    <p class="text-xs text-slate-500 font-medium">প্রতিনিধি সহায়তা পোর্টাল</p>
+                    <p class="text-xs text-emerald-600 font-semibold tracking-wide">অফিসিয়াল প্রতিনিধি সহায়তা পোর্টাল</p>
                 </div>
             </div>
             <div class="flex items-center space-x-3">
-                <button onclick="toggleHelpModal()" class="inline-flex items-center space-x-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 px-3.5 py-2 rounded-lg text-sm font-medium transition">
+                <button onclick="toggleHelpModal()" class="hidden sm:inline-flex items-center space-x-2 bg-slate-100 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 px-4 py-2.5 rounded-xl text-sm font-semibold transition border border-slate-200/60">
                     <i data-lucide="help-circle" class="w-4 h-4 text-emerald-600"></i>
                     <span>সহায়তা মেনু</span>
                 </button>
-                <a href="https://janataronlinepressclub.com/login" target="_blank" class="inline-flex items-center space-x-2 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition shadow-sm">
+                <a href="https://janataronlinepressclub.com/login" target="_blank" class="inline-flex items-center space-x-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-xl text-sm font-bold transition shadow-md shadow-emerald-600/20">
                     <i data-lucide="log-in" class="w-4 h-4"></i>
                     <span>লগইন করুন</span>
                 </a>
@@ -53,117 +54,133 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="bg-gradient-to-b from-emerald-900 to-slate-900 text-white py-14 px-4 text-center relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+    <section class="bg-gradient-to-br from-slate-900 via-emerald-950 to-teal-950 text-white py-16 px-4 text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#34d399_1px,transparent_1px)] [background-size:20px_20px]"></div>
         <div class="max-w-3xl mx-auto relative z-10">
-            <span class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-semibold px-3 py-1 rounded-full inline-block mb-4">
-                অফিসিয়াল প্রতিনিধি পোর্টাল
+            <span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-bold px-4 py-1.5 rounded-full inline-flex items-center space-x-1.5 mb-6 backdrop-blur-md">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                <span>সহজ ও দ্রুত সংবাদ প্রকাশের মাধ্যম</span>
             </span>
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">জনতার অনলাইন প্রেস ক্লাব</h2>
-            <p class="text-lg md:text-xl text-emerald-100/90 mb-6 font-medium">প্রতিনিধিদের জন্য সংবাদ আপলোড ও সহায়তা পোর্টাল</p>
-            <p class="text-slate-300 text-sm md:text-base max-w-xl mx-auto bg-white/5 p-4 rounded-xl border border-white/10 backdrop-blur-sm">
-                সংবাদ আপলোড, লগইন এবং অ্যাকাউন্ট সংক্রান্ত যেকোনো সমস্যার সমাধানের জন্য নিচের নির্দেশনাগুলো ধাপে ধাপে অনুসরণ করুন।
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">জনতার অনলাইন প্রেস ক্লাব</h2>
+            <p class="text-xl md:text-2xl text-emerald-300 font-semibold mb-6">প্রতিনিধিদের জন্য সংবাদ আপলোড ও সহায়তা পোর্টাল</p>
+            <p class="text-slate-300 text-sm md:text-base max-w-xl mx-auto bg-white/5 p-4 rounded-2xl border border-white/10 backdrop-blur-md leading-relaxed shadow-inner">
+                সংবাদ আপলোড, লগইন এবং অ্যাকাউন্ট সংক্রান্ত যেকোনো সমস্যার দ্রুত ও সহজ সমাধানের জন্য নিচের নির্দেশনাগুলো অনুসরণ করুন।
             </p>
         </div>
     </section>
 
     <!-- Main Content -->
-    <main class="max-w-5xl mx-auto px-4 py-10 flex-grow space-y-12">
+    <main class="max-w-5xl mx-auto px-4 py-12 flex-grow space-y-12">
 
-        <!-- Section 1: Video Tutorial (Much Larger & Clear Screen) -->
-        <section id="video-section" class="bg-white rounded-3xl shadow-lg border-2 border-slate-200 p-6 md:p-10 transition-all duration-300">
-            <div class="flex items-center space-x-3 mb-6">
-                <div class="bg-red-100 text-red-600 p-3 rounded-2xl">
-                    <i data-lucide="video" class="w-7 h-7"></i>
+        <!-- Section 1: Video Tutorial (Extra Large & Immersive) -->
+        <section id="video-section" class="bg-white rounded-3xl shadow-xl border border-slate-200/80 p-6 md:p-10 transition-all duration-300">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                <div class="flex items-center space-x-4">
+                    <div class="bg-red-50 text-red-600 p-3.5 rounded-2xl border border-red-100 shadow-sm">
+                        <i data-lucide="video" class="w-7 h-7"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900">📰 কীভাবে সংবাদ আপলোড করব?</h3>
+                        <p class="text-sm md:text-base text-slate-500 mt-0.5">নিচে ভিডিওটি প্লে করে খুব বড় ও স্পষ্ট স্ক্রিনে সম্পূর্ণ নিয়মটি দেখে নিন।</p>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="text-2xl md:text-3xl font-bold text-slate-900">📰 কীভাবে সংবাদ আপলোড করব?</h3>
-                    <p class="text-sm md:text-base text-slate-500">নিচে ভিডিওটি প্লে করে খুব বড় স্ক্রিনে ধাপে ধাপে সংবাদ আপলোড করার নিয়মগুলো দেখে নিন।</p>
-                </div>
+                <span class="bg-red-500/10 text-red-600 border border-red-200 text-xs font-bold px-3 py-1.5 rounded-xl self-start md:self-auto">
+                    সম্পূর্ণ ভিডিও টিউটোরিয়াল
+                </span>
             </div>
 
-            <!-- YouTube Video Embed - Significantly Enlarged Size -->
-            <div id="video-container-wrapper" class="relative w-full aspect-[16/9] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl bg-slate-900 mb-6 border-2 border-slate-200">
+            <!-- YouTube Video Embed - Extra Large Size for Clear viewing -->
+            <div id="video-container-wrapper" class="relative w-full aspect-[16/9] md:h-[520px] rounded-2xl overflow-hidden shadow-2xl bg-slate-900 mb-6 border-4 border-slate-100">
                 <iframe id="tutorialVideo" class="w-full h-full" src="https://www.youtube.com/embed/Pn2dMtFj1Sk" title="কীভাবে সংবাদ আপলোড করবেন" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
 
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 bg-slate-50 p-5 rounded-2xl border border-slate-200">
-                <p class="text-sm md:text-base text-slate-700 font-semibold text-center sm:text-left">
-                    সম্পূর্ণ প্রক্রিয়াটি পরিষ্কারভাবে দেখতে ভিডিওটি বড় স্ক্রিন বা ইউটিউবেও দেখতে পারেন।
-                </p>
-                <a href="https://youtu.be/Pn2dMtFj1Sk" target="_blank" class="w-full sm:w-auto inline-flex justify-center items-center space-x-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3.5 rounded-xl text-sm font-bold transition shadow-md">
-                    <i data-lucide="play-circle" class="w-5 h-5"></i>
-                    <span>ইউটিউবে সরাসরি দেখুন</span>
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 bg-slate-50 p-5 rounded-2xl border border-slate-200/60">
+                <div class="flex items-center space-x-3 text-center sm:text-left">
+                    <div class="w-10 h-10 rounded-xl bg-red-600 text-white flex items-center justify-center shrink-0 shadow-md">
+                        <i data-lucide="play" class="w-5 h-5"></i>
+                    </div>
+                    <p class="text-sm md:text-base text-slate-700 font-bold">
+                        ধাপে ধাপে ভিডিওটি দেখুন এবং নিজেই সহজে সংবাদ আপলোড করুন।
+                    </p>
+                </div>
+                <a href="https://youtu.be/Pn2dMtFj1Sk" target="_blank" class="w-full sm:w-auto inline-flex justify-center items-center space-x-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3.5 rounded-xl text-sm font-bold transition shadow-md shadow-red-600/25">
+                    <span>ইউটিউবে বড় করে দেখুন</span>
+                    <i data-lucide="external-link" class="w-4 h-4"></i>
                 </a>
             </div>
         </section>
 
-        <!-- Section 2: Login Portal -->
-        <section class="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl border border-emerald-100 p-6 md:p-8 shadow-sm text-center">
-            <div class="max-w-xl mx-auto">
-                <div class="w-12 h-12 bg-emerald-600 text-white rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-md">
-                    <i data-lucide="lock" class="w-6 h-6"></i>
+        <!-- Section 2: Login Portal (Vibrant & Eye-catching) -->
+        <section class="bg-gradient-to-br from-emerald-600 via-emerald-700 to-teal-800 rounded-3xl p-8 md:p-12 shadow-xl text-white text-center relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 opacity-10">
+                <i data-lucide="shield-check" class="w-64 h-64"></i>
+            </div>
+            <div class="max-w-2xl mx-auto relative z-10">
+                <div class="w-16 h-16 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-lg">
+                    <i data-lucide="lock" class="w-8 h-8"></i>
                 </div>
-                <h3 class="text-xl font-bold text-slate-900 mb-2">🔐 সংবাদ আপলোড করতে লগইন করুন</h3>
-                <p class="text-slate-600 text-sm mb-6">আপনার সংবাদ প্রকাশ করতে প্রথমে নিচের বাটনে ক্লিক করে নির্ধারিত সংবাদ আপলোড সিস্টেমে লগইন করুন।</p>
-                <a href="https://janataronlinepressclub.com/login" target="_blank" class="inline-flex items-center space-x-2 bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3.5 rounded-xl text-base font-semibold transition shadow-md hover:shadow-lg">
-                    <i data-lucide="key-round" class="w-5 h-5"></i>
+                <h3 class="text-2xl md:text-3xl font-extrabold mb-3">🔐 সংবাদ আপলোড করতে লগইন করুন</h3>
+                <p class="text-emerald-100 text-sm md:text-base mb-8 leading-relaxed">
+                    আপনার তৈরি করা সংবাদ সফলভাবে প্রকাশ করতে নিচের বাটনে ক্লিক করে সরাসরি সংবাদ আপলোড পোর্টালে প্রবেশ করুন।
+                </p>
+                <a href="https://janataronlinepressclub.com/login" target="_blank" class="inline-flex items-center space-x-3 bg-white text-emerald-900 hover:bg-emerald-50 px-8 py-4 rounded-2xl text-base font-extrabold transition shadow-xl hover:scale-105 transform duration-200">
+                    <i data-lucide="key-round" class="w-5 h-5 text-emerald-600"></i>
                     <span>সংবাদ আপলোডে লগইন করুন</span>
                 </a>
             </div>
         </section>
 
         <!-- Section 3 & 4: Support & Common Issues -->
-        <section class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-6 md:p-8">
-            <div class="flex items-center space-x-3 mb-6">
-                <div class="bg-amber-100 text-amber-700 p-2.5 rounded-lg">
-                    <i data-lucide="help-circle" class="w-6 h-6"></i>
+        <section class="bg-white rounded-3xl shadow-xl border border-slate-200/80 p-6 md:p-10">
+            <div class="flex items-center space-x-4 mb-8">
+                <div class="bg-amber-50 text-amber-600 p-3.5 rounded-2xl border border-amber-100 shadow-sm">
+                    <i data-lucide="help-circle" class="w-7 h-7"></i>
                 </div>
                 <div>
-                    <h3 class="text-xl font-bold text-slate-900">🆘 সহায়তা প্রয়োজন? সাধারণ সমস্যা ও সমাধান</h3>
-                    <p class="text-sm text-slate-500">আপনার সমস্যাটি নিচের অপশনগুলোতে ক্লিক করে দ্রুত সমাধান করে নিন।</p>
+                    <h3 class="text-2xl font-extrabold text-slate-900">🆘 সহায়তা প্রয়োজন? সাধারণ সমস্যা ও সমাধান</h3>
+                    <p class="text-sm md:text-base text-slate-500 mt-0.5">আপনার যেকোনো সমস্যায় নিচের অপশনগুলোতে ক্লিক করে তাৎক্ষণিক সমাধান নিন।</p>
                 </div>
             </div>
 
             <!-- Problem Cards Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                <a href="https://forms.gle/iw9NiobnxxCmaqwA6" target="_blank" class="flex items-center justify-between p-4 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50/50 transition group">
-                    <div class="flex items-center space-x-3">
-                        <span class="text-amber-500 font-bold">❓</span>
-                        <span class="text-sm font-semibold text-slate-700 group-hover:text-emerald-800">পাসওয়ার্ড মনে নেই বা ভুলে গেছেন?</span>
+                <a href="https://forms.gle/iw9NiobnxxCmaqwA6" target="_blank" class="flex items-center justify-between p-5 rounded-2xl border-2 border-slate-100 bg-slate-50/50 hover:border-emerald-500 hover:bg-emerald-50/30 transition group shadow-sm">
+                    <div class="flex items-center space-x-3.5">
+                        <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-sm">❓</div>
+                        <span class="text-sm md:text-base font-bold text-slate-700 group-hover:text-emerald-900">পাসওয়ার্ড মনে নেই বা ভুলে গেছেন?</span>
                     </div>
-                    <i data-lucide="external-link" class="w-4 h-4 text-slate-400 group-hover:text-emerald-600"></i>
+                    <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400 group-hover:text-emerald-600 group-hover:translate-x-1 transition"></i>
                 </a>
 
-                <a href="https://forms.gle/iw9NiobnxxCmaqwA6" target="_blank" class="flex items-center justify-between p-4 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50/50 transition group">
-                    <div class="flex items-center space-x-3">
-                        <span class="text-amber-500 font-bold">❓</span>
-                        <span class="text-sm font-semibold text-slate-700 group-hover:text-emerald-800">লগইন হচ্ছে না বা সমস্যা হচ্ছে?</span>
+                <a href="https://forms.gle/iw9NiobnxxCmaqwA6" target="_blank" class="flex items-center justify-between p-5 rounded-2xl border-2 border-slate-100 bg-slate-50/50 hover:border-emerald-500 hover:bg-emerald-50/30 transition group shadow-sm">
+                    <div class="flex items-center space-x-3.5">
+                        <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-sm">❓</div>
+                        <span class="text-sm md:text-base font-bold text-slate-700 group-hover:text-emerald-900">লগইন হচ্ছে না বা সমস্যা হচ্ছে?</span>
                     </div>
-                    <i data-lucide="external-link" class="w-4 h-4 text-slate-400 group-hover:text-emerald-600"></i>
+                    <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400 group-hover:text-emerald-600 group-hover:translate-x-1 transition"></i>
                 </a>
 
-                <a href="https://forms.gle/iw9NiobnxxCmaqwA6" target="_blank" class="flex items-center justify-between p-4 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50/50 transition group">
-                    <div class="flex items-center space-x-3">
-                        <span class="text-amber-500 font-bold">❓</span>
-                        <span class="text-sm font-semibold text-slate-700 group-hover:text-emerald-800">সংবাদ আপলোড করতে পারছি না?</span>
+                <a href="https://forms.gle/iw9NiobnxxCmaqwA6" target="_blank" class="flex items-center justify-between p-5 rounded-2xl border-2 border-slate-100 bg-slate-50/50 hover:border-emerald-500 hover:bg-emerald-50/30 transition group shadow-sm">
+                    <div class="flex items-center space-x-3.5">
+                        <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-sm">❓</div>
+                        <span class="text-sm md:text-base font-bold text-slate-700 group-hover:text-emerald-900">সংবাদ আপলোড করতে পারছি না?</span>
                     </div>
-                    <i data-lucide="external-link" class="w-4 h-4 text-slate-400 group-hover:text-emerald-600"></i>
+                    <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400 group-hover:text-emerald-600 group-hover:translate-x-1 transition"></i>
                 </a>
 
-                <a href="https://forms.gle/iw9NiobnxxCmaqwA6" target="_blank" class="flex items-center justify-between p-4 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50/50 transition group">
-                    <div class="flex items-center space-x-3">
-                        <span class="text-amber-500 font-bold">❓</span>
-                        <span class="text-sm font-semibold text-slate-700 group-hover:text-emerald-800">অ্যাকাউন্ট সংক্রান্ত অন্যান্য সমস্যা</span>
+                <a href="https://forms.gle/iw9NiobnxxCmaqwA6" target="_blank" class="flex items-center justify-between p-5 rounded-2xl border-2 border-slate-100 bg-slate-50/50 hover:border-emerald-500 hover:bg-emerald-50/30 transition group shadow-sm">
+                    <div class="flex items-center space-x-3.5">
+                        <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-sm">❓</div>
+                        <span class="text-sm md:text-base font-bold text-slate-700 group-hover:text-emerald-900">অ্যাকাউন্ট সংক্রান্ত অন্যান্য সমস্যা</span>
                     </div>
-                    <i data-lucide="external-link" class="w-4 h-4 text-slate-400 group-hover:text-emerald-600"></i>
+                    <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400 group-hover:text-emerald-600 group-hover:translate-x-1 transition"></i>
                 </a>
             </div>
 
             <!-- Google Form Main Button -->
-            <div class="text-center bg-slate-50 p-6 rounded-xl border border-slate-100">
-                <p class="text-sm text-slate-600 mb-4 font-medium">উপরে উল্লেখিত সমস্যা ছাড়াও যেকোনো তথ্যের জন্য সরাসরি সহায়তা ফর্মটি পূরণ করুন।</p>
-                <a href="https://forms.gle/iw9NiobnxxCmaqwA6" target="_blank" class="inline-flex items-center space-x-2 bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 rounded-xl text-sm font-semibold transition shadow-sm">
+            <div class="text-center bg-gradient-to-r from-slate-900 to-slate-800 p-8 rounded-2xl text-white shadow-lg">
+                <p class="text-sm md:text-base text-slate-300 mb-5 font-medium">উপরে উল্লেখিত সমস্যা ছাড়াও যেকোনো তথ্যের জন্য সরাসরি আমাদের অফিসিয়াল সহায়তা ফর্মটি পূরণ করুন।</p>
+                <a href="https://forms.gle/iw9NiobnxxCmaqwA6" target="_blank" class="inline-flex items-center space-x-2.5 bg-emerald-500 hover:bg-emerald-600 text-slate-950 hover:text-white px-7 py-3.5 rounded-xl text-sm font-extrabold transition shadow-md">
                     <i data-lucide="file-text" class="w-4 h-4"></i>
                     <span>📝 সহায়তা নিতে ফর্ম পূরণ করুন</span>
                 </a>
@@ -173,65 +190,65 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-white border-t border-slate-200 py-6 text-center text-sm text-slate-500">
+    <footer class="bg-white border-t border-slate-200 py-8 text-center text-sm text-slate-500">
         <p>© ২০২৬ জনতার অনলাইন প্রেস ক্লাব। সর্বস্বত্ব সংরক্ষিত।</p>
     </footer>
 
     <!-- Floating Help Button ("আমার সহায়তা প্রয়োজন") -->
     <div class="fixed bottom-6 right-6 z-50">
-        <button onclick="toggleHelpModal()" class="flex items-center space-x-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3.5 rounded-full shadow-lg transition transform hover:scale-105 font-semibold text-sm">
+        <button onclick="toggleHelpModal()" class="flex items-center space-x-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-6 py-4 rounded-full shadow-2xl transition transform hover:scale-105 font-bold text-sm border-2 border-white/20">
             <i data-lucide="message-circle-question" class="w-5 h-5"></i>
             <span>আমার সহায়তা প্রয়োজন</span>
         </button>
     </div>
 
     <!-- Interactive Help Modal (Shows automatically after 40 seconds) -->
-    <div id="helpModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 relative animate-in fade-in zoom-in duration-300 border border-slate-100">
-            <button onclick="toggleHelpModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 bg-slate-100 p-1.5 rounded-full transition">
+    <div id="helpModal" class="fixed inset-0 bg-slate-950/75 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-7 relative animate-in fade-in zoom-in duration-300 border border-slate-100">
+            <button onclick="toggleHelpModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 bg-slate-100 hover:bg-slate-200 p-2 rounded-full transition">
                 <i data-lucide="x" class="w-5 h-5"></i>
             </button>
 
-            <div class="flex items-center space-x-3 mb-4">
-                <div class="bg-emerald-100 text-emerald-600 p-2.5 rounded-xl">
-                    <i data-lucide="help-circle" class="w-6 h-6"></i>
+            <div class="flex items-center space-x-3.5 mb-6">
+                <div class="bg-emerald-100 text-emerald-700 p-3 rounded-2xl shadow-sm">
+                    <i data-lucide="help-circle" class="w-7 h-7"></i>
                 </div>
                 <div>
-                    <h4 class="font-bold text-lg text-slate-900">কীভাবে সহায়তা করতে পারি?</h4>
-                    <p class="text-xs text-slate-500">নিচের অপশনগুলো থেকে আপনার প্রয়োজনীয় বিষয়টি বেছে নিন:</p>
+                    <h4 class="font-extrabold text-xl text-slate-900">কীভাবে সহায়তা করতে পারি?</h4>
+                    <p class="text-xs text-slate-500 font-medium">নিচের অপশনগুলো থেকে আপনার প্রয়োজনীয় বিষয়টি বেছে নিন:</p>
                 </div>
             </div>
 
-            <div class="space-y-3 mt-6">
+            <div class="space-y-3.5">
                 <!-- Option 1: Video Tutorial -->
-                <button onclick="selectHelpOption('video')" class="w-full text-left p-4 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50/60 transition flex items-center space-x-3.5 group shadow-sm">
-                    <div class="bg-red-100 text-red-600 p-2.5 rounded-xl group-hover:scale-110 transition shrink-0">
+                <button onclick="selectHelpOption('video')" class="w-full text-left p-4 rounded-2xl border-2 border-slate-100 hover:border-emerald-500 hover:bg-emerald-50/50 transition flex items-center space-x-4 group shadow-sm">
+                    <div class="bg-red-100 text-red-600 p-3 rounded-xl group-hover:scale-110 transition shrink-0">
                         <i data-lucide="play" class="w-5 h-5"></i>
                     </div>
                     <div>
-                        <p class="text-sm font-bold text-slate-800 group-hover:text-emerald-900">সংবাদ আপলোডের ভিডিও দেখতে চান?</p>
+                        <p class="text-sm font-extrabold text-slate-800 group-hover:text-emerald-900">সংবাদ আপলোডের ভিডিও দেখতে চান?</p>
                         <p class="text-xs text-slate-500">বড় স্ক্রিনে ভিডিওটি প্লে হবে</p>
                     </div>
                 </button>
 
                 <!-- Option 2: Login Website -->
-                <button onclick="selectHelpOption('login')" class="w-full text-left p-4 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50/60 transition flex items-center space-x-3.5 group shadow-sm">
-                    <div class="bg-emerald-100 text-emerald-600 p-2.5 rounded-xl group-hover:scale-110 transition shrink-0">
+                <button onclick="selectHelpOption('login')" class="w-full text-left p-4 rounded-2xl border-2 border-slate-100 hover:border-emerald-500 hover:bg-emerald-50/50 transition flex items-center space-x-4 group shadow-sm">
+                    <div class="bg-emerald-100 text-emerald-700 p-3 rounded-xl group-hover:scale-110 transition shrink-0">
                         <i data-lucide="log-in" class="w-5 h-5"></i>
                     </div>
                     <div>
-                        <p class="text-sm font-bold text-slate-800 group-hover:text-emerald-900">আমাদের ওয়েবসাইটে লগইন করতে চান?</p>
+                        <p class="text-sm font-extrabold text-slate-800 group-hover:text-emerald-900">আমাদের ওয়েবসাইটে লগইন করতে চান?</p>
                         <p class="text-xs text-slate-500">সরাসরি লগইন পোর্টালে প্রবেশ করুন</p>
                     </div>
                 </button>
 
                 <!-- Option 3: Forgot Password / Support Form -->
-                <button onclick="selectHelpOption('support')" class="w-full text-left p-4 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50/60 transition flex items-center space-x-3.5 group shadow-sm">
-                    <div class="bg-amber-100 text-amber-700 p-2.5 rounded-xl group-hover:scale-110 transition shrink-0">
+                <button onclick="selectHelpOption('support')" class="w-full text-left p-4 rounded-2xl border-2 border-slate-100 hover:border-emerald-500 hover:bg-emerald-50/50 transition flex items-center space-x-4 group shadow-sm">
+                    <div class="bg-amber-100 text-amber-700 p-3 rounded-xl group-hover:scale-110 transition shrink-0">
                         <i data-lucide="help-circle" class="w-5 h-5"></i>
                     </div>
                     <div>
-                        <p class="text-sm font-bold text-slate-800 group-hover:text-emerald-900">লগইন সমস্যা বা পাসওয়ার্ড ভুলে গেছেন?</p>
+                        <p class="text-sm font-extrabold text-slate-800 group-hover:text-emerald-900">লগইন সমস্যা বা পাসওয়ার্ড ভুলে গেছেন?</p>
                         <p class="text-xs text-slate-500">সহায়তার জন্য গুগল ফর্ম পূরণ করুন</p>
                     </div>
                 </button>
