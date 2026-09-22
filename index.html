@@ -70,30 +70,30 @@
     <!-- Main Content -->
     <main class="max-w-5xl mx-auto px-4 py-10 flex-grow space-y-12">
 
-        <!-- Section 1: Video Tutorial (Extra Large & Clear) -->
-        <section id="video-section" class="bg-white rounded-2xl shadow-md border-2 border-slate-200 p-6 md:p-10 transition-all duration-300">
+        <!-- Section 1: Video Tutorial (Much Larger & Clear Screen) -->
+        <section id="video-section" class="bg-white rounded-3xl shadow-lg border-2 border-slate-200 p-6 md:p-10 transition-all duration-300">
             <div class="flex items-center space-x-3 mb-6">
-                <div class="bg-red-100 text-red-600 p-3 rounded-xl">
+                <div class="bg-red-100 text-red-600 p-3 rounded-2xl">
                     <i data-lucide="video" class="w-7 h-7"></i>
                 </div>
                 <div>
-                    <h3 class="text-2xl font-bold text-slate-900">📰 কীভাবে সংবাদ আপলোড করব?</h3>
-                    <p class="text-sm md:text-base text-slate-500">সংবাদ আপলোড করার সম্পূর্ণ প্রক্রিয়াটি বড় স্ক্রিনে স্পষ্টভাবে দেখতে ভিডিওটি সম্পূর্ণ দেখুন।</p>
+                    <h3 class="text-2xl md:text-3xl font-bold text-slate-900">📰 কীভাবে সংবাদ আপলোড করব?</h3>
+                    <p class="text-sm md:text-base text-slate-500">নিচে ভিডিওটি প্লে করে খুব বড় স্ক্রিনে ধাপে ধাপে সংবাদ আপলোড করার নিয়মগুলো দেখে নিন।</p>
                 </div>
             </div>
 
-            <!-- YouTube Video Embed - Extra Large Size -->
-            <div id="video-container-wrapper" class="relative w-full aspect-video md:aspect-[16/9] rounded-2xl overflow-hidden shadow-2xl bg-slate-900 mb-6 border-2 border-slate-200">
+            <!-- YouTube Video Embed - Significantly Enlarged Size -->
+            <div id="video-container-wrapper" class="relative w-full aspect-[16/9] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl bg-slate-900 mb-6 border-2 border-slate-200">
                 <iframe id="tutorialVideo" class="w-full h-full" src="https://www.youtube.com/embed/Pn2dMtFj1Sk" title="কীভাবে সংবাদ আপলোড করবেন" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
 
             <div class="flex flex-col sm:flex-row items-center justify-between gap-4 bg-slate-50 p-5 rounded-2xl border border-slate-200">
                 <p class="text-sm md:text-base text-slate-700 font-semibold text-center sm:text-left">
-                    দেখুন কীভাবে ধাপে ধাপে আপনার সংবাদ ওয়েবসাইটে সফলভাবে আপলোড করবেন।
+                    সম্পূর্ণ প্রক্রিয়াটি পরিষ্কারভাবে দেখতে ভিডিওটি বড় স্ক্রিন বা ইউটিউবেও দেখতে পারেন।
                 </p>
-                <a href="https://youtu.be/Pn2dMtFj1Sk" target="_blank" class="w-full sm:w-auto inline-flex justify-center items-center space-x-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-xl text-sm font-bold transition shadow-md">
+                <a href="https://youtu.be/Pn2dMtFj1Sk" target="_blank" class="w-full sm:w-auto inline-flex justify-center items-center space-x-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3.5 rounded-xl text-sm font-bold transition shadow-md">
                     <i data-lucide="play-circle" class="w-5 h-5"></i>
-                    <span>ইউটিউবে বড় করে দেখুন</span>
+                    <span>ইউটিউবে সরাসরি দেখুন</span>
                 </a>
             </div>
         </section>
@@ -185,7 +185,7 @@
         </button>
     </div>
 
-    <!-- Interactive Help Modal (Hidden initially, opens after 40 seconds) -->
+    <!-- Interactive Help Modal (Shows automatically after 40 seconds) -->
     <div id="helpModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 relative animate-in fade-in zoom-in duration-300 border border-slate-100">
             <button onclick="toggleHelpModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 bg-slate-100 p-1.5 rounded-full transition">
@@ -210,7 +210,7 @@
                     </div>
                     <div>
                         <p class="text-sm font-bold text-slate-800 group-hover:text-emerald-900">সংবাদ আপলোডের ভিডিও দেখতে চান?</p>
-                        <p class="text-xs text-slate-500">বড় স্ক্রিনে ভিডিওটি অটো-প্লে হবে</p>
+                        <p class="text-xs text-slate-500">বড় স্ক্রিনে ভিডিওটি প্লে হবে</p>
                     </div>
                 </button>
 
@@ -244,7 +244,7 @@
         // Initialize Lucide Icons
         lucide.createIcons();
 
-        // Show Help Modal automatically after 40 seconds (40000 milliseconds)
+        // Show Help Modal automatically after 40 seconds
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 const modal = document.getElementById('helpModal');
